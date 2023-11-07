@@ -1,24 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+:root {
+	--input-height: 30px;
+	--input-width: 250px;
+}
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
 body {
-	display: flex;
-	height: 100vh;
+	display: grid;
+	grid-template-columns: 2fr 3fr;
+	grid-template-areas: "banner content";
 	font-family: 'Quicksand', sans-serif;
 }
-body > * {
-	flex-grow: 0;
-}
 .banner {
-	width: 45vw;
+	grid-area: "banner";
 	background-image: url(./assets/bird-background.jpg);
 	filter: brightness(.8);
- 	background-size: auto 100%;
+ 	background-size: 1000px auto;
  	background-position-x: 45%;
+	background-repeat: no-repeat;
  	position: relative;
 }
 .title {
@@ -47,13 +50,13 @@ body > * {
 	filter: opacity(50%);
 }
 main.content {
-	width: 55%;
+	grid-area: "content";
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	gap: 2rem;
-	padding-inline: 2rem;
+	padding: 2rem;
 }
 .cta {
 	display: flex;
@@ -71,4 +74,49 @@ main.content {
 .cta em {
 	text-decoration: underline;
 	text-decoration-style: double;
+}
+
+form {
+	width: 100%;
+}
+fieldset {
+	border: none;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1.5rem;
+	padding: 2rem 0;
+}
+form .row {
+	display: flex;
+	gap: 1rem;
+}
+form .row>* {
+	display: flex;
+	flex-direction: column;
+}
+form .row input {
+	padding-left: 5px;
+	height: var(--input-height);
+	width: var(--input-width);
+}
+form .row input::placeholder {
+	opacity: 0;
+}
+form .row>* label {
+	position: relative;
+	padding-left: 5px;
+	top: -5px;
+	opacity: .8;
+	transition: all 250ms ease-out;
+	user-select: none;
+}
+form .row>*:has(input:placeholder-shown) label {
+	top: calc(calc(var(--input-height) * .5) + 10px);
+	cursor: text;
+}
+form .row>*:has(input:focus) label {
+	cursor: default;
+	top: -5px;
 }
