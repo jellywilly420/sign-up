@@ -116,6 +116,7 @@ form .row input {
 form .row input:focus, 
 form .row input:focus-visible {
 	border-color: var(--blue);
+	box-shadow: 0 0 4px .1px;
 }
 form .row input::placeholder {
 	opacity: 0;
