@@ -19,8 +19,8 @@
 }
 body {
 	display: grid;
-	grid-template-columns: 2fr 3fr;
 	grid-template-areas: "banner content";
+	grid-template-columns: 2fr 3fr;
 	font-family: 'Quicksand', sans-serif;
 }
 .banner {
@@ -168,4 +168,36 @@ p.log-in {
 .log-in a {
 	color: var(--purple);
 	font-weight: 600;
+}
+
+@media only screen and (max-width: 600px) {
+	body {
+		grid-template-areas:
+		"banner"
+		"banner"
+		"content"
+		"content"
+		"content";
+		grid-template-columns: initial;
+		grid-template-rows: minmax(100px, 200px) auto;
+	}
+	.banner {
+		background-position-y: 30%;
+		min-height: 40vh;
+	}
+	.title {
+		top: initial;
+		bottom: 15%;
+		padding-block: 1rem;
+	}
+	.title img {
+		width: 50px;
+		height: 50px;
+	}
+	.cta p {
+		line-height: 1.6rem;
+	}
+	fieldset {
+		box-shadow: 0 1px 5px 1px;
+	}
 }
